@@ -5,11 +5,25 @@ plugins {
 android {
     compileSdk 32
 
+
+    def getMyVersionCode = { ->
+        def code = project.hasProperty('versionCode') ? versionCode.toInteger() : -1
+        println "VersionCode is set to $code"
+        return code
+    }
+
+    def getMyVersionName = { ->
+        def name = project.hasProperty('versionName') ? versionName : "1.0."
+        println "VersionName is set to $name"
+        return name
+    }
+
     defaultConfig {
         applicationId "com.example.lolo"
         minSdk 27
         targetSdk 32
-        versionCode 1
+        versionCode getMyVersionCode()
+        versionName getMyVersionName()
         archivesBaseName = "YourApp-${android.defaultConfig.versionName}"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -28,6 +42,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+
+
+
     /*applicationVariants.all { variant ->
         variant.outputs.all {
             def flavor = variant.name
@@ -38,17 +56,6 @@ android {
     }*/
 }
 
-def getMyVersionCode = { ->
-    def code = project.hasProperty('versionCode') ? versionCode.toInteger() : -1
-    println "VersionCode is set to $code"
-    return code
-}
-
-def getMyVersionName = { ->
-    def name = project.hasProperty('versionName') ? versionName : "1.0"
-    println "VersionName is set to $name"
-    return name
-}
 
 dependencies {
 
