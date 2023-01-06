@@ -29,14 +29,14 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    applicationVariants.all { variant ->
+    /*applicationVariants.all { variant ->
         variant.outputs.all {
             def flavor = variant.name
             def versionName = variant.versionName
             def formattedDate = new Date().format('yyyyMMddHHmmss')
             outputFileName = "${flavor}_${formattedDate}.apk"
         }
-    }
+    }*/
 }
 
 def getMyVersionCode = { ->
