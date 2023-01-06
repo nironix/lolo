@@ -6,7 +6,11 @@ android {
     compileSdk 32
 
 
-
+    def getMyVersionCode = { ->
+        def code = project.hasProperty('versionCode') ? versionCode.toInteger() : -1
+        println "VersionCode is set to $code"
+        return code
+    }
 
     def getMyVersionName = { ->
         def name = project.hasProperty('versionName') ? versionName : "1.0."
@@ -20,7 +24,7 @@ android {
         targetSdk 32
         versionCode 1
         versionName "1.0"
-        archivesBaseName = "woohoo_"+getMyVersionName
+        archivesBaseName = "woohoo_"+getMyVersionName()
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
